@@ -5,9 +5,9 @@
 
 Déploiement
 
-Prendre le projet en local avec git
-Dans le terminal
-Entrer dans le projet foodapp
+Prendre le projet en local avec git dans le terminal.
+
+Entrer dans le projet foodapp.
 
 
 Côté Python :
@@ -27,7 +27,12 @@ Côté Nuxt (nodeJS) :
 
 Dans un autre terminal, lancer :
 ```bash
+npm i
 npm run dev
 ```
+
+
+Puis ouvrir la page :
+http://localhost:3000/
 
 # daniel-serra
