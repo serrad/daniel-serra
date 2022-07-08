@@ -7,7 +7,7 @@ Déploiement
 
 Prendre le projet en local avec git dans le terminal.
 
-Entrer dans le projet foodapp.
+Entrer dans le projet.
 
 
 Côté Python :
