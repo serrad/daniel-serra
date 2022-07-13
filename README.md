@@ -18,6 +18,8 @@ https://fastapi.tiangolo.com/
 pip install fastapi
 pip install "uvicorn[standard]"
 uvicorn main:app --reload #lance le serveur backend en python
+ou
+python -m uvicorn main:app --reload
 ```
 
 
