@@ -1,5 +1,4 @@
 <script>
-
 export default {
   name: "map",
   props: {
@@ -10,6 +9,7 @@ export default {
   },
   data () {
     return {
+          //Position de la carte centrée sur les coordonnées de Lausanne
           center: {
             lat: 46.5196535,
             lng: 6.6322734
@@ -30,15 +30,14 @@ export default {
   },
 
   methods: {
+    //Ouverture de l'infowindow sur le marqueur
     toggleInfoWindow: function(marker, idx) {
             this.infoWindowPos = marker.position;
             this.infoOptions.content = marker.infoText;
 
-            //check if its the same marker that was selected if yes toggle
             if (this.currentMidx == idx) {
               this.infoWinOpen = !this.infoWinOpen;
             }
-            //if different marker set infowindow to open and reset current marker index
             else {
               this.infoWinOpen = true;
               this.currentMidx = idx;
@@ -52,9 +51,9 @@ export default {
     <div>
     <gmap-map
       :center="center"
-      :zoom="10"
-      style="width:100%;  height: 555px;">
-      
+      :zoom="9"
+      style="width:88%; margin-left:90px; margin-right:90px; height: 300px;">
+      <!-- Positionnement des marqueurs selon BDD -->
       <gmap-marker
         :key="index"
         v-for="(m,i) in locations"
@@ -63,7 +62,6 @@ export default {
         :icon="markerIcon"
         @click="toggleInfoWindow(m,i)">
       ></gmap-marker>
-
       <gmap-info-window :options="infoOptions" :position="infoWindowPos" :opened="infoWinOpen" @closeclick="infoWinOpen=false">
       </gmap-info-window>
     </gmap-map>

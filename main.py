@@ -2,7 +2,6 @@ from typing import Union
 from fastapi import FastAPI
 from pydantic import BaseModel
 import sqlite3
-
 from fastapi.middleware.cors import CORSMiddleware
 
 origins = [
@@ -17,6 +16,7 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+# Création d'une classe Item
 class Item(BaseModel):
     title: str
     description: str
@@ -25,12 +25,11 @@ class Item(BaseModel):
     latitude: float
     longitude: float
 
+# Au lancement de l'application
 @app.get("/")
 def read_root():
-    
     conn = sqlite3.connect('restos.db')
     if(conn):
-        
         #Crée la table restaurant si elle n'existe pas
         cur = conn.cursor()
         listOfTables = cur.execute(
@@ -39,12 +38,11 @@ def read_root():
             conn.execute('''CREATE TABLE restaurant
                 (id INTEGER PRIMARY KEY AUTOINCREMENT,
                 title TEXT NOT NULL,
-                description TEXT NOT NULL,
+                description TEXT,
                 address CHAR(50),
                 phone CHAR(50),
                 latitude REAL,
                 longitude REAL)''')
-            
         restaurants = []
         cursor = conn.execute("SELECT id, title, description, address, phone, latitude, longitude FROM restaurant")
         for row in cursor:
@@ -54,7 +52,7 @@ def read_root():
         return restaurants
     else:
         return {"Hello": "No database"}
-        
+
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     restaurants = []
@@ -71,9 +69,9 @@ def read_item(item_id: int, q: Union[str, None] = None):
     else:
         return {"item_id": item_id, "q": q}
 
+# Modification d'un restaurant
 @app.put("/items/{item_id}")
 def update_item(item_id: int, item: Item):
-    
     conn = sqlite3.connect('restos.db')
     if(conn):
         conn.execute("UPDATE restaurant SET title = ?, description = ?, address = ?, phone = ?, latitude = ?, longitude = ? WHERE id = ?", (item.title, item.description, item.address, item.phone, str(item.latitude), str(item.longitude), item_id))
@@ -83,9 +81,9 @@ def update_item(item_id: int, item: Item):
     else:
         return {"Error"}
 
+# Ajout d'un restaurant
 @app.post("/items")
 def create_item(item: Item):
-    
     conn = sqlite3.connect('restos.db')
     if(conn):
         conn.execute("INSERT INTO restaurant (title, description, address, phone, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?)", (item.title, item.description, item.address, item.phone, str(item.latitude), str(item.longitude)))
@@ -95,9 +93,9 @@ def create_item(item: Item):
     else:
         return {"Error"}
 
+# Suppression d'un restaurant
 @app.delete("/items/{item_id}")
 def delete_item(item_id: int):
-   
     conn = sqlite3.connect('restos.db')
     if(conn):
         conn.execute("DELETE FROM restaurant WHERE id=" + str(item_id))
