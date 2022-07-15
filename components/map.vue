@@ -52,7 +52,7 @@ export default {
     <gmap-map
       :center="center"
       :zoom="9"
-      style="width:88%; margin-left:90px; margin-right:90px; height: 300px;">
+      style="width:100%; height: 300px;">
       <!-- Positionnement des marqueurs selon BDD -->
       <gmap-marker
         :key="index"
