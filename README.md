@@ -17,9 +17,7 @@ https://fastapi.tiangolo.com/
 ```bash
 pip3 install fastapi
 pip3 install "uvicorn[standard]"
-uvicorn main:app --reload #lance le serveur backend en python
-ou
-python -m uvicorn main:app --reload
+python3 -m uvicorn main:app --reload #lance le serveur backend en python
 ```
 
 
