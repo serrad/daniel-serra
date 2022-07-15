@@ -30,6 +30,8 @@ npm run dev
 ```
 Si vous êtes sur Windows et que Node.js and NPM ne sont pas installés, les installer en suivant les instructions sur la page (https://phoenixnap.com/kb/install-node-js-npm-on-windows), puis lancer les deux commandes npm précédentes.
 
+Si vous êtes sur MacOS et que Node.js and NPM ne sont pas installés, les installer en suivant les instructions sur la page (https://phoenixnap.com/kb/install-npm-mac), puis lancer les deux commandes npm précédentes.
+
 
 Si SQLite n'est pas déjà installé, installer DB Browser for SQLite via cette page : https://sqlitebrowser.org/dl/
 
