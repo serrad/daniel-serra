@@ -25,6 +25,10 @@ python3 -m uvicorn main:app --reload # Lance le serveur backend en python
 
 Côté Nuxt (nodeJS) :
 
+Installer Nuxt : https://nuxtjs.org/fr/docs/get-started/installation/
+
+Installer NPM et Node.js : https://docs.npmjs.com/downloading-and-installing-node-js-and-npm
+
 Dans un autre terminal, lancer ces deux commandes :
 ```bash
 # Commande à ne lancer que lors de la première installation
